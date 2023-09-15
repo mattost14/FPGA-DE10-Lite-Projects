@@ -1,0 +1,16 @@
+# ignore all modelSim files
+*.mti
+*.mpf
+vsim.wlf
+
+transcript
+
+# Quartus generated files
+*.bak
+*.qws
+
+# folder to ignore
+db/
+incremental_db/
+simulation/
+work/
