@@ -2,40 +2,100 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 85C Model Setup 'my_counter:u0|ticks[0]'
+Slack : -6.474
+TNS   : -55.877
+
 Type  : Slow 1200mV 85C Model Setup 'MAX10_CLK1_50'
-Slack : -3.350
-TNS   : -103.406
+Slack : -2.869
+TNS   : -55.058
+
+Type  : Slow 1200mV 85C Model Hold 'my_counter:u0|ticks[0]'
+Slack : 0.612
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK1_50'
-Slack : 0.419
+Slack : 0.668
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'MAX10_CLK1_50'
+Slack : -5.471
+TNS   : -136.541
+
+Type  : Slow 1200mV 85C Model Removal 'MAX10_CLK1_50'
+Slack : 1.493
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MAX10_CLK1_50'
 Slack : -3.000
-TNS   : -52.105
+TNS   : -38.075
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'my_counter:u0|ticks[0]'
+Slack : 0.414
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'my_counter:u0|ticks[0]'
+Slack : -5.889
+TNS   : -51.085
 
 Type  : Slow 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -3.032
-TNS   : -93.190
+Slack : -2.453
+TNS   : -46.663
+
+Type  : Slow 1200mV 0C Model Hold 'my_counter:u0|ticks[0]'
+Slack : 0.522
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.387
+Slack : 0.616
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'MAX10_CLK1_50'
+Slack : -5.038
+TNS   : -125.818
+
+Type  : Slow 1200mV 0C Model Removal 'MAX10_CLK1_50'
+Slack : 1.276
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
 Slack : -3.000
-TNS   : -52.105
+TNS   : -38.075
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'my_counter:u0|ticks[0]'
+Slack : 0.331
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'my_counter:u0|ticks[0]'
+Slack : -2.237
+TNS   : -19.332
 
 Type  : Fast 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -0.830
-TNS   : -22.884
+Slack : -1.064
+TNS   : -20.049
+
+Type  : Fast 1200mV 0C Model Hold 'my_counter:u0|ticks[0]'
+Slack : -0.017
+TNS   : -0.017
 
 Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.167
+Slack : 0.260
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'MAX10_CLK1_50'
+Slack : -1.969
+TNS   : -49.076
+
+Type  : Fast 1200mV 0C Model Removal 'MAX10_CLK1_50'
+Slack : 0.592
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
 Slack : -3.000
-TNS   : -39.628
+TNS   : -28.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'my_counter:u0|ticks[0]'
+Slack : 0.339
+TNS   : 0.000
 
 ------------------------------------------------------------

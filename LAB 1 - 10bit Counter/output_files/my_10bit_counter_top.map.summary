@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Fri Sep 15 14:30:54 2023
+Analysis & Synthesis Status : Successful - Fri Sep 15 15:26:41 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : my_10bit_counter_top
 Top-level Entity Name : my_10bit_counter_top
 Family : MAX 10
-Total logic elements : 44
-    Total combinational functions : 44
-    Dedicated logic registers : 35
-Total registers : 35
+Total logic elements : 54
+    Total combinational functions : 54
+    Dedicated logic registers : 25
+Total registers : 25
 Total pins : 13
 Total virtual pins : 0
 Total memory bits : 0

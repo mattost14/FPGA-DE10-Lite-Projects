@@ -47,7 +47,7 @@ begin
           ticks <= (others => '0');
         end if;
       end if;
-    end process;
+  end process;
 
   count <= std_logic_vector(counts);
 
