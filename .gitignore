@@ -2,6 +2,7 @@
 *.mti
 *.mpf
 vsim.wlf
+*.do
 
 transcript
 
