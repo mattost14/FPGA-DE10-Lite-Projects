@@ -24,17 +24,18 @@ architecture rtl of my_stopwatch is
 begin
   
   process(clk, rst, stp) is
-    variable ticks : unsigned(19 downto 0);
+    variable ticks : natural range 0 to N_tickCycles-1;
   begin
     if rst = '1' then -- Reset is pressed!
         -- Reset the Watch
-        ticks := (others => '0');
+        ticks := 0;
         cc_count <= (others => '0');
         ss_count <= (others => '0');
         mm_count <= (others => '0');
     elsif rising_edge(clk) and stp ='0' then
+      -- True once every 0.01 seconds
       if ticks = (N_tickCycles-1) then
-        ticks := (others => '0');
+        ticks := 0;
         if cc_count < 99 then
           cc_count <= cc_count + 1;
         else
