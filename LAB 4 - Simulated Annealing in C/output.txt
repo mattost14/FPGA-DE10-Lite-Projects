@@ -1,0 +1,25 @@
+Node 0 placed at (1, 0)
+Node 1 placed at (2, 0)
+Node 2 placed at (0, 1)
+Node 3 placed at (1, 2)
+Node 4 placed at (2, 3)
+Node 5 placed at (3, 2)
+Node 6 placed at (3, 0)
+Node 7 placed at (4, 1)
+Node 8 placed at (4, 2)
+Node 9 placed at (2, 1)
+Node 10 placed at (3, 1)
+Node 11 placed at (1, 1)
+Node 12 placed at (2, 2)
+Edge from 3 to 12 has length 1
+Edge from 4 to 12 has length 1
+Edge from 5 to 12 has length 1
+Edge from 0 to 11 has length 1
+Edge from 1 to 11 has length 2
+Edge from 2 to 11 has length 1
+Edge from 6 to 10 has length 1
+Edge from 7 to 10 has length 1
+Edge from 8 to 10 has length 2
+Edge from 12 to 9 has length 1
+Edge from 11 to 9 has length 1
+Edge from 10 to 9 has length 1
