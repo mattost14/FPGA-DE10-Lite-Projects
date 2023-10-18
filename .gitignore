@@ -15,3 +15,7 @@ db/
 incremental_db/
 simulation/
 work/
+
+# C code
+.vscode
+*.dSYM
