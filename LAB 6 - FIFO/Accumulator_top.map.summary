@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Oct 25 14:07:20 2023
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : Accumulator_top
+Top-level Entity Name : Accumulator_top
+Family : MAX 10
+Total logic elements : 268
+    Total combinational functions : 232
+    Dedicated logic registers : 143
+Total registers : 143
+Total pins : 71
+Total virtual pins : 0
+Total memory bits : 80
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0
