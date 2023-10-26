@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Oct 25 14:07:39 2023
+Fitter Status : Successful - Thu Oct 26 12:19:09 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : Accumulator_top
 Top-level Entity Name : Accumulator_top
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 257 / 49,760 ( < 1 % )
-    Total combinational functions : 235 / 49,760 ( < 1 % )
-    Dedicated logic registers : 143 / 49,760 ( < 1 % )
-Total registers : 143
+Total logic elements : 184 / 49,760 ( < 1 % )
+    Total combinational functions : 165 / 49,760 ( < 1 % )
+    Dedicated logic registers : 112 / 49,760 ( < 1 % )
+Total registers : 112
 Total pins : 71 / 360 ( 20 % )
 Total virtual pins : 0
 Total memory bits : 80 / 1,677,312 ( < 1 % )

@@ -42,7 +42,7 @@ begin
   -- Debounce add button
   U0: entity work.ButtonDebounce 
   generic map (
-    delay => 500  -- 0.001 ms of press button for 5MHz clock
+    delay => 500  -- 1 ms of minimum press button time for 5MHz clock
   )
   port map(
     clk       => clk0, 

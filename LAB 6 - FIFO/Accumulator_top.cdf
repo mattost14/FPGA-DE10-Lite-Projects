@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484) Path("//Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/LAB 6 - FIFO/") File("Accumulator_top.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484) Path("//mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/LAB 6 - FIFO/") File("Accumulator_top.pof") MfrSpec(OpMask(1) Child_OpMask(2 1 1));
 
 ChainEnd;
 

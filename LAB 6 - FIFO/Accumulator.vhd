@@ -19,23 +19,22 @@ end Accumulator;
 
 architecture rtl of Accumulator is
   -- FSM 1
-  type state1_type is (IDDLE, WRITE_FIFO, DRAIN_FIFO);
+  type state1_type is (IDDLE, WRITE_FIFO);
   signal state1 : state1_type;
   -- FSM 2
   type state2_type is (WAITING, READ_FIFO, UPDATE_ACC, PRE_READ);
   signal state2 : state2_type;
   -- FIFO signals
-  signal aclr	    : std_logic;
-  signal rdreq	  : std_logic;
-  signal wrreq	  : std_logic;
-  signal q	      : std_logic_vector(9 downto 0);
-  signal rdempty	: std_logic;
-  signal wrfull	: std_logic;
+  signal aclr	        : std_logic;
+  signal rdreq	      : std_logic;
+  signal wrreq	      : std_logic;
+  signal q	          : std_logic_vector(9 downto 0);
+  signal rdempty	    : std_logic;
+  signal wrfull	      : std_logic;
+  signal rdusedw  : std_logic_vector (2 downto 0);
   -- Control signals
   signal valueAddedFlag   : std_logic;
   signal acc_buf : unsigned(23 downto 0);
-  signal acc_fifo : unsigned(13 downto 0);  -- stores the sum of all five values from FIFO
-  signal numValuesInFIFO : natural;
   signal sumOfValuesFromFIFO : unsigned(13 downto 0);
 
 begin
@@ -51,17 +50,16 @@ begin
 		wrreq	  => wrreq,
 		q	      => q,
 		rdempty	=> rdempty,
-		wrfull	=> wrfull
+		wrfull	=> wrfull,
+    rdusedw	 => rdusedw
 	);
 
   -- FSM on 5MHz clock to manage button presses and the write side of the FIFO
   FSM1 : process(clk0)
   begin
     if rising_edge(clk0) then
-      if rst = '1' then
-        -- Reset 
+      if rst = '1' then    -- Reset 
         valueAddedFlag <= '0';
-        numValuesInFIFO <= 0;
         state1 <= IDDLE;
       else
         case state1 is
@@ -77,23 +75,11 @@ begin
               valueAddedFlag <= '0';
             end if;
 
-            if numValuesInFIFO = 5 then
-              state1 <= DRAIN_FIFO;
-            end if;
-
           -- WRITE VALUE INTO FIFO
           when WRITE_FIFO => 
-            -- if numValuesInFIFO < 5 then
               wrreq <= '1';                           -- write request
               valueAddedFlag <= '1';                  -- set valueAdded flag to 1
-              numValuesInFIFO <= numValuesInFIFO + 1; -- update counter
               state1 <= IDDLE;
-            -- end if;
-
-          -- DRAIN FIFO
-          when DRAIN_FIFO =>
-            state1 <= IDDLE;
-            numValuesInFIFO <= 0;
         end case;
       end if;
     end if;
@@ -103,8 +89,8 @@ begin
   FSM2 : process(clk1)
   begin
     if rising_edge(clk1) then
-      if rst = '1' then
-        aclr <= '1';  -- reset FIFO
+      if rst = '1' then -- reset FIFO and Accumulator buffer
+        aclr <= '1';  
         acc_buf <= (others => '0');
         state2 <= WAITING;
       else 
@@ -114,17 +100,16 @@ begin
             aclr <= '0';
             sumOfValuesFromFIFO <= (others => '0');
             rdreq <= '0'; 
-            if state1 = DRAIN_FIFO then
+            if rdusedw = "101" then
               rdreq <= '1'; 
               state2 <= PRE_READ;
             end if;
-          -- Delay by one clock cycle to enable read
+          -- Delay by one clock cycle to enable read on next clock cycle
           when PRE_READ =>
             state2 <= READ_FIFO;
           -- READ UNTIL EMPTY
-          when READ_FIFO =>
-            report "Entity: q=" & integer'image(to_integer(unsigned(q)));                                    
-            sumOfValuesFromFIFO <= sumOfValuesFromFIFO + unsigned(q);   -- write 10-bit value to FIFO
+          when READ_FIFO =>                                 
+            sumOfValuesFromFIFO <= sumOfValuesFromFIFO + unsigned(q);   -- read value from FIFO and add to the sum
             state2 <= READ_FIFO;
             if rdempty = '1' then  
               rdreq <= '0';
