@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at spi.sv(88): always construct contains both blocking and non-blocking assignments File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/spi.sv Line: 88
+Info (10281): Verilog HDL Declaration information at spi.sv(21): object "active" differs only in case from object "ACTIVE" in the same scope File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/spi.sv Line: 21
