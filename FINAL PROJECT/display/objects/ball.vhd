@@ -56,6 +56,8 @@ architecture rtl of ball is
   signal r_yPos : integer range 0 to c_screen_height-1 := c_init_pos_y;
   signal r_xSpeed : integer := 0;
   signal r_ySpeed : integer := 0;
+  -- Random Num
+  signal random10bitNum : unsigned(9 downto 0);
 begin
 
 -- Set draw output
@@ -101,8 +103,12 @@ end process;
               r_xSpeed <= 0;
               r_ySpeed <= 2;
               ball_fall <= '0'; 
-          elsif i_new_ball_pulse = '1' then
-              r_xPos <= c_init_pos_x+100; 
+          elsif i_update_pulse = '1' and i_new_ball_pulse = '1' then
+              if random10bitNum > g_right_bound then
+                r_xPos <= to_integer(random10bitNum/2);
+              else
+                r_xPos <= to_integer(random10bitNum);
+              end if;
               r_yPos <= c_init_pos_y; 
               r_xSpeed <= 0;
               r_ySpeed <= 2;
@@ -179,5 +185,16 @@ end process;
   o_ball_fall <= ball_fall;
   o_pos_x <= r_xPos;
   o_pos_y <= r_yPos;
+
+  random_gen: entity work.randomNumGen 
+  generic map(
+    N => 10
+  )
+  port map (
+    clk => i_clock,
+    rst => i_reset_pulse,
+    gen => '1',
+    randomNum => random10bitNum
+  );
 
 end architecture;

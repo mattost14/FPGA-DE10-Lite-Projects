@@ -1,5 +1,5 @@
 Analysis & Synthesis report for main
-Thu Nov 16 15:12:48 2023
+Thu Nov 16 15:43:52 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -28,14 +28,16 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
  20. Parameter Settings for User Entity Instance: accel_proc:ACC_PROC
  21. Parameter Settings for User Entity Instance: display:DISP|paddle:paddle_obj
  22. Parameter Settings for User Entity Instance: display:DISP|ball:ball_obj
- 23. Parameter Settings for User Entity Instance: display:DISP|brick_wall:brick_wall_obj
- 24. altpll Parameter Settings by Entity Instance
- 25. Port Connectivity Checks: "ADXL345_controller:ACC_CTRL"
- 26. Port Connectivity Checks: "vga_controller:VGA_CTRL"
- 27. Post-Synthesis Netlist Statistics for Top Partition
- 28. Elapsed Time Per Partition
- 29. Analysis & Synthesis Messages
- 30. Analysis & Synthesis Suppressed Messages
+ 23. Parameter Settings for User Entity Instance: display:DISP|ball:ball_obj|randomNumGen:random_gen
+ 24. Parameter Settings for User Entity Instance: display:DISP|brick_wall:brick_wall_obj
+ 25. altpll Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "display:DISP|ball:ball_obj|randomNumGen:random_gen"
+ 27. Port Connectivity Checks: "ADXL345_controller:ACC_CTRL"
+ 28. Port Connectivity Checks: "vga_controller:VGA_CTRL"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -62,15 +64,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 16 15:12:47 2023          ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 16 15:43:52 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; main                                           ;
 ; Top-level Entity Name              ; main                                           ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 2,208                                          ;
-;     Total combinational functions  ; 2,146                                          ;
-;     Dedicated logic registers      ; 335                                            ;
-; Total registers                    ; 335                                            ;
+; Total logic elements               ; 2,243                                          ;
+;     Total combinational functions  ; 2,159                                          ;
+;     Dedicated logic registers      ; 367                                            ;
+; Total registers                    ; 367                                            ;
 ; Total pins                         ; 29                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -192,6 +194,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path     ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                   ; Library ;
 +--------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; random/randomNumGen.vhd              ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd              ;         ;
 ; display/objects/brick_wall.vhd       ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd       ;         ;
 ; display/objects/ball.vhd             ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/ball.vhd             ;         ;
 ; accelerometer/spi.sv                 ; yes             ; User SystemVerilog HDL File  ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/spi.sv                 ;         ;
@@ -218,20 +221,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------------------------------------------------------+
 ; Resource                                    ; Usage                                                  ;
 +---------------------------------------------+--------------------------------------------------------+
-; Estimated Total logic elements              ; 2,208                                                  ;
+; Estimated Total logic elements              ; 2,243                                                  ;
 ;                                             ;                                                        ;
-; Total combinational functions               ; 2146                                                   ;
+; Total combinational functions               ; 2159                                                   ;
 ; Logic element usage by number of LUT inputs ;                                                        ;
-;     -- 4 input functions                    ; 1040                                                   ;
-;     -- 3 input functions                    ; 642                                                    ;
-;     -- <=2 input functions                  ; 464                                                    ;
+;     -- 4 input functions                    ; 1032                                                   ;
+;     -- 3 input functions                    ; 611                                                    ;
+;     -- <=2 input functions                  ; 516                                                    ;
 ;                                             ;                                                        ;
 ; Logic elements by mode                      ;                                                        ;
-;     -- normal mode                          ; 1473                                                   ;
+;     -- normal mode                          ; 1486                                                   ;
 ;     -- arithmetic mode                      ; 673                                                    ;
 ;                                             ;                                                        ;
-; Total registers                             ; 335                                                    ;
-;     -- Dedicated logic registers            ; 335                                                    ;
+; Total registers                             ; 367                                                    ;
+;     -- Dedicated logic registers            ; 367                                                    ;
 ;     -- I/O registers                        ; 0                                                      ;
 ;                                             ;                                                        ;
 ; I/O pins                                    ; 29                                                     ;
@@ -241,10 +244,10 @@ https://fpgasoftware.intel.com/eula.
 ; Total PLLs                                  ; 1                                                      ;
 ;     -- PLLs                                 ; 1                                                      ;
 ;                                             ;                                                        ;
-; Maximum fan-out node                        ; display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3] ;
-; Maximum fan-out                             ; 303                                                    ;
-; Total fan-out                               ; 7955                                                   ;
-; Average fan-out                             ; 3.13                                                   ;
+; Maximum fan-out node                        ; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9] ;
+; Maximum fan-out                             ; 306                                                    ;
+; Total fan-out                               ; 8038                                                   ;
+; Average fan-out                             ; 3.11                                                   ;
 +---------------------------------------------+--------------------------------------------------------+
 
 
@@ -253,14 +256,15 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                     ; Entity Name          ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+----------------------+--------------+
-; |main                                          ; 2146 (0)            ; 335 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 29   ; 0            ; 0          ; |main                                                                                   ; main                 ; work         ;
-;    |ADXL345_controller:ACC_CTRL|               ; 141 (0)             ; 101 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL                                                       ; ADXL345_controller   ; work         ;
-;       |gsensor:U0|                             ; 141 (97)            ; 101 (63)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0                                            ; gsensor              ; work         ;
-;          |spi:u0|                              ; 44 (44)             ; 38 (38)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0                                     ; spi                  ; work         ;
+; |main                                          ; 2159 (0)            ; 367 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 29   ; 0            ; 0          ; |main                                                                                   ; main                 ; work         ;
+;    |ADXL345_controller:ACC_CTRL|               ; 140 (0)             ; 101 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL                                                       ; ADXL345_controller   ; work         ;
+;       |gsensor:U0|                             ; 140 (97)            ; 101 (63)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0                                            ; gsensor              ; work         ;
+;          |spi:u0|                              ; 43 (43)             ; 38 (38)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0                                     ; spi                  ; work         ;
 ;    |accel_proc:ACC_PROC|                       ; 16 (16)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|accel_proc:ACC_PROC                                                               ; accel_proc           ; work         ;
-;    |display:DISP|                              ; 1935 (50)           ; 192 (14)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP                                                                      ; display              ; work         ;
-;       |ball:ball_obj|                          ; 780 (780)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|ball:ball_obj                                                        ; ball                 ; work         ;
-;       |brick_wall:brick_wall_obj|              ; 939 (939)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|brick_wall:brick_wall_obj                                            ; brick_wall           ; work         ;
+;    |display:DISP|                              ; 1949 (49)           ; 224 (14)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP                                                                      ; display              ; work         ;
+;       |ball:ball_obj|                          ; 797 (785)           ; 116 (84)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|ball:ball_obj                                                        ; ball                 ; work         ;
+;          |randomNumGen:random_gen|             ; 12 (12)             ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|ball:ball_obj|randomNumGen:random_gen                                ; randomNumGen         ; work         ;
+;       |brick_wall:brick_wall_obj|              ; 937 (937)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|brick_wall:brick_wall_obj                                            ; brick_wall           ; work         ;
 ;       |paddle:paddle_obj|                      ; 166 (166)           ; 10 (10)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|paddle:paddle_obj                                                    ; paddle               ; work         ;
 ;    |vga_controller:VGA_CTRL|                   ; 54 (54)             ; 42 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|vga_controller:VGA_CTRL                                                           ; vga_controller       ; work         ;
 ;    |vga_pll_clock:VGA_CLK|                     ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|vga_pll_clock:VGA_CLK                                                             ; vga_pll_clock        ; work         ;
@@ -1117,7 +1121,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].y[3]  ;
 ; display:DISP|brick_wall:brick_wall_obj|mywall[71].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].x[3]  ;
 ; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3]  ;
-; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9]  ;
 ; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~2          ; Lost fanout                                                         ;
 ; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~3          ; Lost fanout                                                         ;
 ; Total Number of Removed Registers = 1542                       ;                                                                     ;
@@ -1129,33 +1133,52 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 335   ;
-; Number of registers using Synchronous Clear  ; 3     ;
-; Number of registers using Synchronous Load   ; 83    ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 367   ;
+; Number of registers using Synchronous Clear  ; 10    ;
+; Number of registers using Synchronous Load   ; 88    ;
+; Number of registers using Asynchronous Clear ; 32    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 165   ;
+; Number of registers using Clock Enable       ; 164   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------+
-; Inverted Register Statistics                       ;
-+------------------------------------------+---------+
-; Inverted Register                        ; Fan out ;
-+------------------------------------------+---------+
-; display:DISP|ball:ball_obj|r_xPos[8]     ; 32      ;
-; display:DISP|ball:ball_obj|r_xPos[6]     ; 43      ;
-; display:DISP|ball:ball_obj|r_yPos[7]     ; 4       ;
-; display:DISP|ball:ball_obj|r_yPos[6]     ; 4       ;
-; display:DISP|ball:ball_obj|r_yPos[5]     ; 4       ;
-; display:DISP|ball:ball_obj|r_yPos[4]     ; 4       ;
-; display:DISP|paddle:paddle_obj|r_xPos[8] ; 6       ;
-; display:DISP|paddle:paddle_obj|r_xPos[6] ; 6       ;
-; display:DISP|r_num_lives[0]              ; 13      ;
-; display:DISP|r_num_lives[2]              ; 13      ;
-; Total number of inverted registers = 10  ;         ;
-+------------------------------------------+---------+
++-----------------------------------------------------------------------+
+; Inverted Register Statistics                                          ;
++-------------------------------------------------------------+---------+
+; Inverted Register                                           ; Fan out ;
++-------------------------------------------------------------+---------+
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9]      ; 306     ;
+; display:DISP|ball:ball_obj|r_xPos[8]                        ; 32      ;
+; display:DISP|ball:ball_obj|r_xPos[6]                        ; 42      ;
+; display:DISP|ball:ball_obj|r_yPos[7]                        ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[6]                        ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[5]                        ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[4]                        ; 4       ;
+; display:DISP|paddle:paddle_obj|r_xPos[8]                    ; 6       ;
+; display:DISP|paddle:paddle_obj|r_xPos[6]                    ; 6       ;
+; display:DISP|r_num_lives[0]                                 ; 13      ;
+; display:DISP|r_num_lives[2]                                 ; 13      ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[10] ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[3]  ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[4]  ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[5]  ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[6]  ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[8]  ; 5       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[9]  ; 4       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[11] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[16] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[17] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[18] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[19] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[24] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[25] ; 2       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[26] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[27] ; 2       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[28] ; 1       ;
+; display:DISP|ball:ball_obj|randomNumGen:random_gen|lfsr[0]  ; 1       ;
+; Total number of inverted registers = 29                     ;         ;
++-------------------------------------------------------------+---------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1164,14 +1187,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|clk_counter[2] ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_xPos[3]                         ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_yPos[0]                         ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_xPos[3]                         ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|count[0]       ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|idlecount[0]   ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[0]                     ;
 ; 8:1                ; 32 bits   ; 160 LEs       ; 96 LEs               ; 64 LEs                 ; Yes        ; |main|display:DISP|ball:ball_obj|r_xSpeed[4]                       ;
 ; 9:1                ; 32 bits   ; 192 LEs       ; 64 LEs               ; 128 LEs                ; Yes        ; |main|display:DISP|ball:ball_obj|r_ySpeed[9]                       ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|r_num_lives[2]                                  ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_yPos[5]                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_yPos[5]                         ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_xPos[6]                         ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[8]                     ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[80]          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[79]          ;
@@ -1725,6 +1750,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:DISP|ball:ball_obj|randomNumGen:random_gen ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 10    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: display:DISP|brick_wall:brick_wall_obj ;
 +--------------------+-------+--------------------------------------------------------+
@@ -1752,6 +1787,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+-----------------------------------------------+
 
 
++--------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:DISP|ball:ball_obj|randomNumGen:random_gen" ;
++------+-------+----------+------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                              ;
++------+-------+----------+------------------------------------------------------+
+; gen  ; Input ; Info     ; Stuck at VCC                                         ;
++------+-------+----------+------------------------------------------------------+
+
+
 +-------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "ADXL345_controller:ACC_CTRL"                                                           ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1777,28 +1821,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 29                          ;
-; cycloneiii_ff         ; 335                         ;
-;     ENA               ; 161                         ;
+; cycloneiii_ff         ; 367                         ;
+;     CLR               ; 32                          ;
+;     ENA               ; 155                         ;
 ;     ENA SCLR          ; 2                           ;
-;     ENA SLD           ; 2                           ;
+;     ENA SCLR SLD      ; 7                           ;
 ;     SCLR              ; 1                           ;
 ;     SLD               ; 81                          ;
-;     plain             ; 88                          ;
+;     plain             ; 89                          ;
 ; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 2147                        ;
+; cycloneiii_lcell_comb ; 2160                        ;
 ;     arith             ; 673                         ;
 ;         2 data inputs ; 342                         ;
 ;         3 data inputs ; 331                         ;
-;     normal            ; 1474                        ;
+;     normal            ; 1487                        ;
 ;         0 data inputs ; 13                          ;
-;         1 data inputs ; 15                          ;
-;         2 data inputs ; 95                          ;
-;         3 data inputs ; 311                         ;
-;         4 data inputs ; 1040                        ;
+;         1 data inputs ; 23                          ;
+;         2 data inputs ; 139                         ;
+;         3 data inputs ; 280                         ;
+;         4 data inputs ; 1032                        ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 25.90                       ;
-; Average LUT depth     ; 12.21                       ;
+; Max LUT depth         ; 25.70                       ;
+; Average LUT depth     ; 11.98                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1817,9 +1862,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Thu Nov 16 15:12:23 2023
+    Info: Processing started: Thu Nov 16 15:43:28 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off main -c main
 Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 2 design units, including 1 entities, in source file random/randomnumgen.vhd
+    Info (12022): Found design unit 1: randomNumGen-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd Line: 18
+    Info (12023): Found entity 1: randomNumGen File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file display/objects/brick_wall.vhd
     Info (12022): Found design unit 1: brick_wall-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd Line: 31
     Info (12023): Found entity 1: brick_wall File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd Line: 8
@@ -2010,6 +2058,9 @@ Warning (10492): VHDL Process Statement warning at display.vhd(159): signal "w_b
 Info (12128): Elaborating entity "paddle" for hierarchy "display:DISP|paddle:paddle_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 191
 Warning (10540): VHDL Signal Declaration warning at paddle.vhd(45): used explicit default value for signal "r_yPos" because signal was never assigned a value File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 45
 Info (12128): Elaborating entity "ball" for hierarchy "display:DISP|ball:ball_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 204
+Info (12128): Elaborating entity "randomNumGen" for hierarchy "display:DISP|ball:ball_obj|randomNumGen:random_gen" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/ball.vhd Line: 189
+Warning (10492): VHDL Process Statement warning at randomNumGen.vhd(24): signal "rst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd Line: 24
+Warning (10492): VHDL Process Statement warning at randomNumGen.vhd(26): signal "gen" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd Line: 26
 Info (12128): Elaborating entity "brick_wall" for hierarchy "display:DISP|brick_wall:brick_wall_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 221
 Critical Warning (127005): Memory depth (64) in the design file differs from memory depth (44) in the Memory Initialization File "//Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/db/main.ram0_gsensor_889e66e.hdl.mif" -- setting initial value for remaining addresses to 0
 Info (276014): Found 1 instances of uninferred RAM logic
@@ -2035,6 +2086,8 @@ Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
     Info (13026): Duplicate LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[28]" merged with LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[31]" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 37
     Info (13026): Duplicate LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[29]" merged with LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[31]" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 37
     Info (13026): Duplicate LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[30]" merged with LATCH primitive "accel_proc:ACC_PROC|accel_scale_x[31]" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 37
+Info (13000): Registers with preset signals will power-up high File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/random/randomNumGen.vhd Line: 24
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "GSENSOR_SDI~synth" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 20
 Warning (13024): Output pins are stuck at VCC or GND
@@ -2044,17 +2097,17 @@ Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2267 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2301 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 2237 logic cells
+    Info (21061): Implemented 2271 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 4838 megabytes
-    Info: Processing ended: Thu Nov 16 15:12:48 2023
-    Info: Elapsed time: 00:00:25
-    Info: Total CPU time (on all processors): 00:00:40
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 4841 megabytes
+    Info: Processing ended: Thu Nov 16 15:43:52 2023
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:37
 
 
 +------------------------------------------+
