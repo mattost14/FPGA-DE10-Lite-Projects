@@ -21,7 +21,7 @@ entity display is
     o_green    :  out std_logic_vector(3 downto 0) := (others => '0');  --green magnitude output to DAC
     o_blue     :  out std_logic_vector(3 downto 0) := (others => '0');  --blue magnitude output to DAC
     -- 7-Segment Display outputs
-    o_HEX1, o_HEX0  : out std_logic_vector(7 downto 0)
+    o_HEX0  : out std_logic_vector(7 downto 0)
   );
 end display;
 
@@ -34,6 +34,7 @@ architecture rtl of display is
   signal r_game_state   : t_state := ST_NEW_GAME;
   signal r_num_lives    : integer range 0 to c_initial_lives := c_initial_lives;
   signal r_lost_ball    : std_logic := '0'; 
+  signal r_new_ball    : std_logic := '0'; 
   signal r_logic_update : std_logic := '0'; 
   signal r_obj_reset    : std_logic := '0';
   signal r_game_over    : std_logic := '0';
@@ -46,11 +47,27 @@ architecture rtl of display is
   signal w_paddleDraw   : std_logic;
   signal w_paddleColor  : integer range 0 to 4095;
 
+  -- Ball Signals
+  signal w_block_collision  : std_logic := '0';
+  signal w_ball_fall    : std_logic := '0';
+  signal w_ball_pos_x : integer;
+  signal w_ball_pos_y : integer;
+  signal w_ballDraw   : std_logic;
+  signal w_ballColor  : integer range 0 to 4095;
+  signal w_brickDraw   : std_logic;
+  signal w_brickColor  : integer range 0 to 4095;
+
+
   -- Control signals
   signal r_disp_en_d : std_logic := '0';   -- Registered disp_en input
   signal r_disp_en_fe : std_logic;         -- Falling edge of disp_en input
   signal r_key_d : std_logic_vector(1 downto 0);
   signal r_key_press : std_logic_vector(1 downto 0); -- Pulse, keypress event
+
+  -- 7-Segment Display Lookup Table
+  type RAM is array (0 to 15) of std_logic_vector(7 downto 0);
+  constant lut : RAM := (X"C0", X"F9", X"A4", X"B0", X"99", X"92", X"82", X"F8", X"80", X"98", X"88", X"83", X"C6", X"A1", X"86", X"8E");
+  
 begin
 
     -- Concurrent assignments
@@ -62,35 +79,56 @@ begin
     r_key_d <= i_KEY when rising_edge(i_pixel_clk) and r_logic_update='1'; -- DFF, value of keys at last logical update
     r_key_press <= r_key_d and not i_KEY;   -- One-cycle strobe, for next logical update
 
+    -- Display Country Number in the 7-Segment Display
+    o_HEX0 <= lut(r_num_lives);
+
+    -- Handle lives
+    process(i_pixel_clk)
+    begin   
+        if rising_edge(i_pixel_clk) and r_logic_update = '1' and r_lost_ball = '0' then
+            if r_obj_reset = '1' then
+              r_num_lives <= c_initial_lives;
+            elsif w_ball_fall = '1' then
+              if r_num_lives > 0 then
+                r_num_lives <= r_num_lives-1;
+              end if;
+            end if;   
+        end if;
+    end process;
 
     -- Main game FSM
     process(i_pixel_clk)
     begin
         if rising_edge(i_pixel_clk) and r_logic_update = '1' then
             if i_KEY(0) = '0' then
-              r_game_state <= ST_NEW_GAME;
+              r_game_state  <= ST_NEW_GAME;
+              r_lost_ball <= '0';
               r_obj_reset   <= '1';
-              r_game_over <= '0';
+              r_game_over   <= '0';
             else
               case r_game_state is
                   when ST_NEW_GAME =>
                     r_obj_reset   <= '0';
                     r_game_state <= ST_PLAY;
                   when ST_PLAY => 
-                    if r_num_lives = 0 then
-                      r_game_state <= ST_GAME_OVER;
-                    elsif r_lost_ball = '1' then
+                    if w_ball_fall = '1' then
+                      r_lost_ball <= '1';
                       r_game_state <= ST_LOST_BALL;
                     else
                       r_game_state <= ST_PLAY;
                     end if;
                   when ST_LOST_BALL => 
-                    if i_KEY(1) = '0' then
+                    if r_num_lives = 0 then
+                      r_game_state <= ST_GAME_OVER;
+                    elsif i_KEY(1) = '0'  then
+                      r_new_ball <= '1';
+                      r_lost_ball <= '0';
                       r_game_state <= ST_NEW_BALL;
                     else
                       r_game_state <= ST_LOST_BALL;
                     end if;
                   when ST_NEW_BALL => 
+                    r_new_ball <= '0';
                     r_game_state <= ST_PLAY;
                   when ST_GAME_OVER => 
                     r_game_state <= ST_GAME_OVER;
@@ -114,6 +152,12 @@ begin
       if (w_paddleDraw = '1') then
           pix_color_tmp := w_paddleColor;
       end if;
+      if (w_ballDraw = '1') then
+        pix_color_tmp := w_ballColor;
+      end if;
+      if (w_brickDraw = '1') then
+        pix_color_tmp := w_brickColor;
+      end if;
     -- Blanking time
     else                           
       pix_color_tmp := 0;
@@ -127,13 +171,12 @@ begin
       
   end process;
 
-
   -- Update game state at end of each frame
   process(i_pixel_clk)
   begin
       if rising_edge(i_pixel_clk) then
           -- Just finished drawing frame, command a logical update
-          if (r_disp_en_fe = '1' and i_row >= c_screen_height-1 and i_column >= c_screen_width-1) then
+          if (r_disp_en_fe = '1' and i_row = c_screen_height-1 and i_column = c_screen_width-1) then
               r_logic_update <= '1';
           else
               r_logic_update <= '0';
@@ -141,23 +184,52 @@ begin
       end if;
   end process;
 
-      -- Object update signals
-      r_obj_update <= r_logic_update and not r_game_over;
+  -- Object update signals
+  r_obj_update <= r_logic_update and not r_game_over;
 
-    -- Game objects
-    paddle_obj: entity work.paddle port map(
+  -- Game objects
+  paddle_obj: entity work.paddle port map(
       i_clock         => i_pixel_clk,
       i_reset_pulse   => r_obj_reset,
       i_update_pulse  => r_obj_update,
       i_accel_scale_x => i_accel_scale_x,
       i_row           => i_row,
       i_column        => i_column,
-      -- i_draw_en       => r_game_active,
       o_pos_x         => w_paddle_pos_x,
       o_pos_y         => w_paddle_pos_y,
       o_color         => w_paddleColor,
       o_draw          => w_paddleDraw
   );
+
+  ball_obj: entity work.ball port map(
+    i_clock           => i_pixel_clk,
+    i_reset_pulse     => r_obj_reset,
+    i_new_ball_pulse  => r_new_ball,
+    i_update_pulse    => r_obj_update,
+    i_row             => i_row,
+    i_column          => i_column,
+    i_paddle_pos_x    => w_paddle_pos_x,
+    i_paddle_pos_y    => w_paddle_pos_y,
+    i_block_collision => w_block_collision,
+    o_pos_x           => w_ball_pos_x,
+    o_pos_y           => w_ball_pos_y,
+    o_ball_fall       => w_ball_fall,
+    o_color           => w_ballColor,
+    o_draw            => w_ballDraw
+);
+
+  brick_wall_obj: entity work.brick_wall port map(
+  i_clock           => i_pixel_clk,
+  i_reset_pulse     => r_obj_reset,
+  i_update_pulse    => r_obj_update,
+  i_row             => i_row,
+  i_column          => i_column,
+  i_ball_pos_x      => w_ball_pos_x,
+  i_ball_pos_y      => w_ball_pos_y,
+  o_color           => w_brickColor,
+  o_draw            => w_brickDraw,
+  o_block_collision => w_block_collision
+);
 
 
 end architecture;

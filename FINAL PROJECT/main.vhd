@@ -13,7 +13,7 @@ entity main is
     VGA_G            :  out  std_logic_vector(3 downto 0);  -- green magnitude output to DAC
     VGA_B            :  out  std_logic_vector(3 downto 0);  -- blue magnitude output to DAC
     -- 7-Segment Display
-    HEX1, HEX0       :  out std_logic_vector(7 downto 0);
+    HEX0             :  out std_logic_vector(7 downto 0);
     -- Accelerometer I/O
     GSENSOR_CS_N      : out   std_logic;
     GSENSOR_SCLK      : out   std_logic;
@@ -101,8 +101,7 @@ begin
     o_red           => VGA_R,
     o_green         => VGA_G,
     o_blue          => VGA_B,
-    o_HEX0          => HEX0,
-    o_HEX1          => HEX1
+    o_HEX0          => HEX0
   );
 
 

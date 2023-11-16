@@ -1,5 +1,5 @@
 Analysis & Synthesis report for main
-Wed Nov 15 09:19:58 2023
+Thu Nov 16 15:12:48 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -18,18 +18,18 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
  10. State Machine - |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state
  11. User-Specified and Inferred Latches
  12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Inverted Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Parameter Settings for User Entity Instance: vga_pll_clock:VGA_CLK|altpll:altpll_component
- 18. Parameter Settings for User Entity Instance: vga_controller:VGA_CTRL
- 19. Parameter Settings for User Entity Instance: ADXL345_controller:ACC_CTRL|gsensor:U0
- 20. Parameter Settings for User Entity Instance: ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0
- 21. Parameter Settings for User Entity Instance: accel_proc:ACC_PROC
- 22. Parameter Settings for User Entity Instance: display:DISP|paddle:paddle_obj
- 23. altpll Parameter Settings by Entity Instance
- 24. Port Connectivity Checks: "display:DISP|paddle:paddle_obj"
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: vga_pll_clock:VGA_CLK|altpll:altpll_component
+ 17. Parameter Settings for User Entity Instance: vga_controller:VGA_CTRL
+ 18. Parameter Settings for User Entity Instance: ADXL345_controller:ACC_CTRL|gsensor:U0
+ 19. Parameter Settings for User Entity Instance: ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0
+ 20. Parameter Settings for User Entity Instance: accel_proc:ACC_PROC
+ 21. Parameter Settings for User Entity Instance: display:DISP|paddle:paddle_obj
+ 22. Parameter Settings for User Entity Instance: display:DISP|ball:ball_obj
+ 23. Parameter Settings for User Entity Instance: display:DISP|brick_wall:brick_wall_obj
+ 24. altpll Parameter Settings by Entity Instance
  25. Port Connectivity Checks: "ADXL345_controller:ACC_CTRL"
  26. Port Connectivity Checks: "vga_controller:VGA_CTRL"
  27. Post-Synthesis Netlist Statistics for Top Partition
@@ -62,16 +62,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Nov 15 09:19:58 2023          ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 16 15:12:47 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; main                                           ;
 ; Top-level Entity Name              ; main                                           ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 456                                            ;
-;     Total combinational functions  ; 394                                            ;
-;     Dedicated logic registers      ; 157                                            ;
-; Total registers                    ; 157                                            ;
-; Total pins                         ; 37                                             ;
+; Total logic elements               ; 2,208                                          ;
+;     Total combinational functions  ; 2,146                                          ;
+;     Dedicated logic registers      ; 335                                            ;
+; Total registers                    ; 335                                            ;
+; Total pins                         ; 29                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -89,7 +89,7 @@ https://fpgasoftware.intel.com/eula.
 ; Device                                                           ; 10M50DAF484C7G     ;                    ;
 ; Top-level entity name                                            ; main               ; main               ;
 ; Family name                                                      ; MAX 10 FPGA        ; Cyclone V          ;
-; Maximum processors allowed for parallel compilation              ; 6                  ;                    ;
+; Maximum processors allowed for parallel compilation              ; 4                  ;                    ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                      ; Off                ; Off                ;
@@ -168,23 +168,23 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation attempted to use more processors than were available, which may cause increased compilation time. For lowest compilation time, correct your settings.
-+---------------------------------------------+
-; Parallel Compilation                        ;
-+-------------------------------+-------------+
-; Processors                    ; Number      ;
-+-------------------------------+-------------+
-; Number detected on machine    ; 4           ;
-; Maximum allowed               ; 6           ;
-;                               ;             ;
-; Average used                  ; 1.00        ;
-; Maximum used                  ; 6           ;
-;                               ;             ;
-; Usage by Processor            ; % Time Used ;
-;     Processor 1               ; 100.0%      ;
-;     Processors 2-4            ;   0.0%      ;
-;     Processors 5-6 (overused) ;   0.0%      ;
-+-------------------------------+-------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -192,6 +192,8 @@ Parallel compilation attempted to use more processors than were available, which
 +--------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path     ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                   ; Library ;
 +--------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; display/objects/brick_wall.vhd       ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd       ;         ;
+; display/objects/ball.vhd             ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/ball.vhd             ;         ;
 ; accelerometer/spi.sv                 ; yes             ; User SystemVerilog HDL File  ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/spi.sv                 ;         ;
 ; accelerometer/gsensor.sv             ; yes             ; User SystemVerilog HDL File  ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/gsensor.sv             ;         ;
 ; accelerometer/ADXL345_controller.vhd ; yes             ; User VHDL File               ; //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/ADXL345_controller.vhd ;         ;
@@ -211,39 +213,39 @@ Parallel compilation attempted to use more processors than were available, which
 +--------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                       ;
-+---------------------------------------------+---------------------+
-; Resource                                    ; Usage               ;
-+---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 456                 ;
-;                                             ;                     ;
-; Total combinational functions               ; 394                 ;
-; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 136                 ;
-;     -- 3 input functions                    ; 124                 ;
-;     -- <=2 input functions                  ; 134                 ;
-;                                             ;                     ;
-; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 225                 ;
-;     -- arithmetic mode                      ; 169                 ;
-;                                             ;                     ;
-; Total registers                             ; 157                 ;
-;     -- Dedicated logic registers            ; 157                 ;
-;     -- I/O registers                        ; 0                   ;
-;                                             ;                     ;
-; I/O pins                                    ; 37                  ;
-;                                             ;                     ;
-; Embedded Multiplier 9-bit elements          ; 0                   ;
-;                                             ;                     ;
-; Total PLLs                                  ; 1                   ;
-;     -- PLLs                                 ; 1                   ;
-;                                             ;                     ;
-; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
-; Maximum fan-out                             ; 102                 ;
-; Total fan-out                               ; 1609                ;
-; Average fan-out                             ; 2.56                ;
-+---------------------------------------------+---------------------+
++------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                          ;
++---------------------------------------------+--------------------------------------------------------+
+; Resource                                    ; Usage                                                  ;
++---------------------------------------------+--------------------------------------------------------+
+; Estimated Total logic elements              ; 2,208                                                  ;
+;                                             ;                                                        ;
+; Total combinational functions               ; 2146                                                   ;
+; Logic element usage by number of LUT inputs ;                                                        ;
+;     -- 4 input functions                    ; 1040                                                   ;
+;     -- 3 input functions                    ; 642                                                    ;
+;     -- <=2 input functions                  ; 464                                                    ;
+;                                             ;                                                        ;
+; Logic elements by mode                      ;                                                        ;
+;     -- normal mode                          ; 1473                                                   ;
+;     -- arithmetic mode                      ; 673                                                    ;
+;                                             ;                                                        ;
+; Total registers                             ; 335                                                    ;
+;     -- Dedicated logic registers            ; 335                                                    ;
+;     -- I/O registers                        ; 0                                                      ;
+;                                             ;                                                        ;
+; I/O pins                                    ; 29                                                     ;
+;                                             ;                                                        ;
+; Embedded Multiplier 9-bit elements          ; 0                                                      ;
+;                                             ;                                                        ;
+; Total PLLs                                  ; 1                                                      ;
+;     -- PLLs                                 ; 1                                                      ;
+;                                             ;                                                        ;
+; Maximum fan-out node                        ; display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3] ;
+; Maximum fan-out                             ; 303                                                    ;
+; Total fan-out                               ; 7955                                                   ;
+; Average fan-out                             ; 3.13                                                   ;
++---------------------------------------------+--------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -251,13 +253,15 @@ Parallel compilation attempted to use more processors than were available, which
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                     ; Entity Name          ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+----------------------+--------------+
-; |main                                          ; 394 (0)             ; 157 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 37   ; 0            ; 0          ; |main                                                                                   ; main                 ; work         ;
-;    |ADXL345_controller:ACC_CTRL|               ; 142 (0)             ; 101 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL                                                       ; ADXL345_controller   ; work         ;
-;       |gsensor:U0|                             ; 142 (98)            ; 101 (63)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0                                            ; gsensor              ; work         ;
+; |main                                          ; 2146 (0)            ; 335 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 29   ; 0            ; 0          ; |main                                                                                   ; main                 ; work         ;
+;    |ADXL345_controller:ACC_CTRL|               ; 141 (0)             ; 101 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL                                                       ; ADXL345_controller   ; work         ;
+;       |gsensor:U0|                             ; 141 (97)            ; 101 (63)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0                                            ; gsensor              ; work         ;
 ;          |spi:u0|                              ; 44 (44)             ; 38 (38)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0                                     ; spi                  ; work         ;
 ;    |accel_proc:ACC_PROC|                       ; 16 (16)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|accel_proc:ACC_PROC                                                               ; accel_proc           ; work         ;
-;    |display:DISP|                              ; 182 (13)            ; 14 (4)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP                                                                      ; display              ; work         ;
-;       |paddle:paddle_obj|                      ; 169 (169)           ; 10 (10)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|paddle:paddle_obj                                                    ; paddle               ; work         ;
+;    |display:DISP|                              ; 1935 (50)           ; 192 (14)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP                                                                      ; display              ; work         ;
+;       |ball:ball_obj|                          ; 780 (780)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|ball:ball_obj                                                        ; ball                 ; work         ;
+;       |brick_wall:brick_wall_obj|              ; 939 (939)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|brick_wall:brick_wall_obj                                            ; brick_wall           ; work         ;
+;       |paddle:paddle_obj|                      ; 166 (166)           ; 10 (10)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|display:DISP|paddle:paddle_obj                                                    ; paddle               ; work         ;
 ;    |vga_controller:VGA_CTRL|                   ; 54 (54)             ; 42 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|vga_controller:VGA_CTRL                                                           ; vga_controller       ; work         ;
 ;    |vga_pll_clock:VGA_CLK|                     ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|vga_pll_clock:VGA_CLK                                                             ; vga_pll_clock        ; work         ;
 ;       |altpll:altpll_component|                ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|vga_pll_clock:VGA_CLK|altpll:altpll_component                                     ; altpll               ; work         ;
@@ -344,31 +348,780 @@ Encoding Type:  One-Hot
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                             ;
-+-------------------------------------------------------+----------------------------------------+
-; Register name                                         ; Reason for Removal                     ;
-+-------------------------------------------------------+----------------------------------------+
-; display:DISP|paddle:paddle_obj|r_frame_cnt            ; Stuck at GND due to stuck port data_in ;
-; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~2 ; Lost fanout                            ;
-; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~3 ; Lost fanout                            ;
-; display:DISP|r_game_state.ST_PLAY                     ; Lost fanout                            ;
-; display:DISP|r_game_state.ST_LOST_BALL                ; Lost fanout                            ;
-; display:DISP|r_game_state.ST_NEW_BALL                 ; Lost fanout                            ;
-; display:DISP|r_game_state.ST_GAME_OVER                ; Stuck at GND due to stuck port data_in ;
-; display:DISP|r_game_over                              ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 8                 ;                                        ;
-+-------------------------------------------------------+----------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                 ;
-+----------------------------------------+---------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal        ; Registers Removed due to This Register ;
-+----------------------------------------+---------------------------+----------------------------------------+
-; display:DISP|r_game_state.ST_GAME_OVER ; Stuck at GND              ; display:DISP|r_game_over               ;
-;                                        ; due to stuck port data_in ;                                        ;
-+----------------------------------------+---------------------------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                   ;
++----------------------------------------------------------------+---------------------------------------------------------------------+
+; Register name                                                  ; Reason for Removal                                                  ;
++----------------------------------------------------------------+---------------------------------------------------------------------+
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[5,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[4,5,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[6,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[4,6,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[5,6,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[4..6,8]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[7,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[4,7,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[5,7,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[4,5,7,8]   ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[6..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[4,6..8]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[5..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[4..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[9]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[4,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[5,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[4,5,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[6,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[4,6,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[5,6,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[4..6,9]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[4,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[8]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[4..7]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[5..7]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[4,6,7]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[6,7]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[4,5,7]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[5,7]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[4,7]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[7]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[4..6]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[5,6]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[4,6]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[6]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[4,5]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[5]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[4]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].y[0..2,4..7] ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].x[0]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].x[1,2]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].x[4..10]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[4..6,9]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[5,6,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[4,6,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[6,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[4,5,9]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[5,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[4,9]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[9]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].x[4..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[5..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[4,6..8]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[6..8]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[4,5,7,8]   ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[5,7,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[4,7,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[7,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[4..6,8]    ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[5,6,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[4,6,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[6,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[4,5,8]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[5,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[4,8]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[8]         ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[4..7]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[5..7]      ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[4,6,7]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[6,7]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[4,5,7]     ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].y[0..7]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[1..3]      ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[5,7]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[4,7]        ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[7]          ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[4..6]       ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[5,6]        ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[4,6]        ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[6]          ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[4,5]        ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[5]          ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[4]          ; Stuck at VCC due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].y[0..7]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[1..3]       ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|ball:ball_obj|r_frame_cnt                         ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|paddle:paddle_obj|r_frame_cnt                     ; Stuck at GND due to stuck port data_in                              ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[4]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[4]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[0].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[0].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[1].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[1].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[4]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[4]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[2].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[2].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[3].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[3].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[4]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[4]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[4].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[4].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[5].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[5].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[4]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[4]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[6].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[6].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[7].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[7].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[7].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[7].x[7]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[7]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[7].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[7].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[4]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[4]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[8].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[8].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[10]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[10]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[9]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[9]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[8]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[8]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[6]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[6]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[5]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[5]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[9].x[0]   ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[9].x[0]          ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[10].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[10].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[11].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[11].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[11].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[11].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[11].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[11].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[12].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[12].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[13].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[13].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[13].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[13].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[13].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[13].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[14].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[14].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[14].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[14].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[14].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[14].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[15].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[15].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[15].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[15].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[15].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[16].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[16].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[17].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[17].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[18].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[18].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[19].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[19].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[19].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[19].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[19].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[19].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[20].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[20].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[21].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[21].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[21].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[21].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[21].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[21].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[22].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[22].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[22].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[22].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[22].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[22].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[23].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[23].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[23].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[23].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[23].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[24].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[24].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[25].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[25].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[25].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[25].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[25].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[25].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[26].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[26].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[26].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[26].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[26].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[26].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[27].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[27].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[27].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[27].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[27].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[28].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[28].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[28].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[28].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[28].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[28].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[29].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[29].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[29].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[29].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[29].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[30].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[30].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[30].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[30].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[30].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[31].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[31].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[31].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[31].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[32].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[32].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[33].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[33].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[34].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[34].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[35].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[35].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[35].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[35].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[35].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[35].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[36].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[36].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[37].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[37].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[37].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[37].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[37].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[37].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[38].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[38].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[38].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[38].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[38].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[38].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[39].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[39].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[39].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[39].x[0]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[39].x[0]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[56].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[56].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[56].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[80].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[80].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[80].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[8]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[8]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[72].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[72].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[70].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[70].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[70].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[68].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[68].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[68].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[64].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[64].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[64].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[4]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[4]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[5]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[5]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[10] ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[10]        ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[6]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[6]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[7]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[7]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[40].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[40].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[41].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[41].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[42].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[42].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[54].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[54].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[70].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[70].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[70].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[44].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[44].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[78].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[78].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[69].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[69].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[43].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[43].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[68].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[68].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[68].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[77].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[77].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[55].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[55].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[67].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[67].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[51].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[51].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[47].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[47].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[56].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[66].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[66].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[76].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[76].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[56].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[56].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[65].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[65].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[49].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[49].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[75].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[75].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[52].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[52].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[64].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[64].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[64].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[63].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[63].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[57].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[57].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[74].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[74].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[46].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[46].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[62].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[62].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[45].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[45].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[53].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[53].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[61].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[61].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[73].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[73].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[58].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[80].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[80].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[80].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[60].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[50].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[50].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[48].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[48].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[72].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[59].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[59].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[72].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[72].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[79].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[79].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].y[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[71].x[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[71].x[3]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3]  ;
+; display:DISP|brick_wall:brick_wall_obj|mywall[60].x[9]         ; Merged with display:DISP|brick_wall:brick_wall_obj|mywall[58].y[3]  ;
+; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~2          ; Lost fanout                                                         ;
+; ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|state~3          ; Lost fanout                                                         ;
+; Total Number of Removed Registers = 1542                       ;                                                                     ;
++----------------------------------------------------------------+---------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -376,12 +1129,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 157   ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 335   ;
+; Number of registers using Synchronous Clear  ; 3     ;
+; Number of registers using Synchronous Load   ; 83    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 73    ;
+; Number of registers using Clock Enable       ; 165   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -391,9 +1144,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +------------------------------------------+---------+
 ; Inverted Register                        ; Fan out ;
 +------------------------------------------+---------+
-; display:DISP|paddle:paddle_obj|r_xPos[8] ; 3       ;
-; display:DISP|paddle:paddle_obj|r_xPos[6] ; 3       ;
-; Total number of inverted registers = 2   ;         ;
+; display:DISP|ball:ball_obj|r_xPos[8]     ; 32      ;
+; display:DISP|ball:ball_obj|r_xPos[6]     ; 43      ;
+; display:DISP|ball:ball_obj|r_yPos[7]     ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[6]     ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[5]     ; 4       ;
+; display:DISP|ball:ball_obj|r_yPos[4]     ; 4       ;
+; display:DISP|paddle:paddle_obj|r_xPos[8] ; 6       ;
+; display:DISP|paddle:paddle_obj|r_xPos[6] ; 6       ;
+; display:DISP|r_num_lives[0]              ; 13      ;
+; display:DISP|r_num_lives[2]              ; 13      ;
+; Total number of inverted registers = 10  ;         ;
 +------------------------------------------+---------+
 
 
@@ -402,14 +1163,103 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|clk_counter[3] ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|count[1]       ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|idlecount[3]   ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[9]                     ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[6]                     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|clk_counter[2] ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_xPos[3]                         ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|count[0]       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|idlecount[0]   ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[0]                     ;
+; 8:1                ; 32 bits   ; 160 LEs       ; 96 LEs               ; 64 LEs                 ; Yes        ; |main|display:DISP|ball:ball_obj|r_xSpeed[4]                       ;
+; 9:1                ; 32 bits   ; 192 LEs       ; 64 LEs               ; 128 LEs                ; Yes        ; |main|display:DISP|ball:ball_obj|r_ySpeed[9]                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|r_num_lives[2]                                  ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |main|display:DISP|ball:ball_obj|r_yPos[5]                         ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |main|display:DISP|paddle:paddle_obj|r_xPos[8]                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[80]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[79]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[78]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[77]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[76]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[75]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[74]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[73]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[72]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[71]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[70]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[69]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[68]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[67]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[66]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[65]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[64]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[63]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[62]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[61]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[60]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[59]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[58]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[57]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[56]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[55]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[54]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[53]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[52]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[51]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[50]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[49]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[48]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[47]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[46]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[45]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[44]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[43]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[42]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[41]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[40]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[39]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[38]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[37]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[36]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[35]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[34]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[33]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[32]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[31]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[30]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[29]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[28]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[27]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[26]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[25]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[24]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[23]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[22]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[21]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[20]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[19]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[18]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[17]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[16]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[15]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[14]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[13]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[12]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[11]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[10]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[9]            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[8]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isBrick[7]            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[6]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[5]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[4]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[3]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[2]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[1]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|display:DISP|brick_wall:brick_wall_obj|isMortar[0]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |main|display:DISP|o_red[3]                                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |main|display:DISP|o_red[1]                                        ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |main|vga_controller:VGA_CTRL|v_count                              ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |main|display:DISP|r_game_state.ST_LOST_BALL                       ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|Selector1      ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; No         ; |main|display:DISP|ball:ball_obj|r_xPos_new                        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |main|display:DISP|r_game_state.ST_LOST_BALL                       ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|spi:u0|Selector3      ;
 ; 8:1                ; 6 bits    ; 30 LEs        ; 12 LEs               ; 18 LEs                 ; No         ; |main|ADXL345_controller:ACC_CTRL|gsensor:U0|Selector5             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 
@@ -859,6 +1709,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:DISP|ball:ball_obj ;
++--------------------+-------+--------------------------------------------+
+; Parameter Name     ; Value ; Type                                       ;
++--------------------+-------+--------------------------------------------+
+; g_left_bound       ; 0     ; Signed Integer                             ;
+; g_right_bound      ; 640   ; Signed Integer                             ;
+; g_upper_bound      ; 0     ; Signed Integer                             ;
+; g_lower_bound      ; 480   ; Signed Integer                             ;
+; g_frame_update_cnt ; 1     ; Signed Integer                             ;
+; g_min_speed_x      ; 1     ; Signed Integer                             ;
+; g_accel_in_max     ; 256   ; Signed Integer                             ;
++--------------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:DISP|brick_wall:brick_wall_obj ;
++--------------------+-------+--------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                   ;
++--------------------+-------+--------------------------------------------------------+
+; g_frame_update_cnt ; 1     ; Signed Integer                                         ;
++--------------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                                  ;
 +-------------------------------+-----------------------------------------------+
@@ -874,16 +1750,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- VCO_MULTIPLY_BY        ; 0                                             ;
 ;     -- VCO_DIVIDE_BY          ; 0                                             ;
 +-------------------------------+-----------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "display:DISP|paddle:paddle_obj"                                                        ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; o_pos_x ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; o_pos_y ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------+
@@ -910,25 +1776,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 37                          ;
-; cycloneiii_ff         ; 157                         ;
-;     ENA               ; 73                          ;
-;     plain             ; 84                          ;
+; boundary_port         ; 29                          ;
+; cycloneiii_ff         ; 335                         ;
+;     ENA               ; 161                         ;
+;     ENA SCLR          ; 2                           ;
+;     ENA SLD           ; 2                           ;
+;     SCLR              ; 1                           ;
+;     SLD               ; 81                          ;
+;     plain             ; 88                          ;
 ; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 395                         ;
-;     arith             ; 169                         ;
-;         2 data inputs ; 98                          ;
-;         3 data inputs ; 71                          ;
-;     normal            ; 226                         ;
-;         0 data inputs ; 4                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 27                          ;
-;         3 data inputs ; 53                          ;
-;         4 data inputs ; 136                         ;
+; cycloneiii_lcell_comb ; 2147                        ;
+;     arith             ; 673                         ;
+;         2 data inputs ; 342                         ;
+;         3 data inputs ; 331                         ;
+;     normal            ; 1474                        ;
+;         0 data inputs ; 13                          ;
+;         1 data inputs ; 15                          ;
+;         2 data inputs ; 95                          ;
+;         3 data inputs ; 311                         ;
+;         4 data inputs ; 1040                        ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 16.00                       ;
-; Average LUT depth     ; 7.87                        ;
+; Max LUT depth         ; 25.90                       ;
+; Average LUT depth     ; 12.21                       ;
 +-----------------------+-----------------------------+
 
 
@@ -937,7 +1807,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -947,10 +1817,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed Nov 15 09:19:40 2023
+    Info: Processing started: Thu Nov 16 15:12:23 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off main -c main
-Info (20032): Parallel compilation is enabled and will use up to 6 processors
-Warning (20031): Parallel compilation is enabled for 6 processors, but there are only 4 processors in the system. Runtime may increase due to over usage of the processor space.
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 2 design units, including 1 entities, in source file display/objects/brick_wall.vhd
+    Info (12022): Found design unit 1: brick_wall-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd Line: 31
+    Info (12023): Found entity 1: brick_wall File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/brick_wall.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file display/objects/ball.vhd
+    Info (12022): Found design unit 1: ball-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/ball.vhd Line: 46
+    Info (12023): Found entity 1: ball File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/ball.vhd Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file accelerometer/spi.sv
     Info (12023): Found entity 1: spi File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/spi.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file accelerometer/gsensor.sv
@@ -963,9 +1838,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file acceler
     Info (12023): Found entity 1: accel_proc File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 6
 Info (12021): Found 2 design units, including 0 entities, in source file common/common.vhd
     Info (12022): Found design unit 1: common File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/common/common.vhd Line: 6
-    Info (12022): Found design unit 2: common-body File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/common/common.vhd Line: 23
+    Info (12022): Found design unit 2: common-body File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/common/common.vhd Line: 29
 Info (12021): Found 2 design units, including 1 entities, in source file display/objects/paddle.vhd
-    Info (12022): Found design unit 1: paddle-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 39
+    Info (12022): Found design unit 1: paddle-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 38
     Info (12023): Found entity 1: paddle File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file display/display.vhd
     Info (12022): Found design unit 1: display-rtl File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 28
@@ -1122,18 +1997,20 @@ Info (10041): Inferred latch for "accel_scale_x[29]" at accel_proc.vhd(37) File:
 Info (10041): Inferred latch for "accel_scale_x[30]" at accel_proc.vhd(37) File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 37
 Info (10041): Inferred latch for "accel_scale_x[31]" at accel_proc.vhd(37) File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/accel_proc.vhd Line: 37
 Info (12129): Elaborating entity "display" using architecture "A:rtl" for hierarchy "display:DISP" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 92
-Warning (10541): VHDL Signal Declaration warning at display.vhd(24): used implicit default value for signal "o_HEX1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 24
-Warning (10541): VHDL Signal Declaration warning at display.vhd(24): used implicit default value for signal "o_HEX0" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 24
-Warning (10540): VHDL Signal Declaration warning at display.vhd(35): used explicit default value for signal "r_num_lives" because signal was never assigned a value File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 35
-Warning (10540): VHDL Signal Declaration warning at display.vhd(36): used explicit default value for signal "r_lost_ball" because signal was never assigned a value File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 36
-Warning (10036): Verilog HDL or VHDL warning at display.vhd(44): object "w_paddle_pos_x" assigned a value but never read File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 44
-Warning (10036): Verilog HDL or VHDL warning at display.vhd(45): object "w_paddle_pos_y" assigned a value but never read File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 45
-Warning (10036): Verilog HDL or VHDL warning at display.vhd(53): object "r_key_press" assigned a value but never read File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 53
-Warning (10492): VHDL Process Statement warning at display.vhd(69): signal "r_logic_update" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 69
-Warning (10492): VHDL Process Statement warning at display.vhd(114): signal "w_paddleDraw" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 114
-Warning (10492): VHDL Process Statement warning at display.vhd(115): signal "w_paddleColor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 115
-Info (12128): Elaborating entity "paddle" for hierarchy "display:DISP|paddle:paddle_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 148
-Warning (10540): VHDL Signal Declaration warning at paddle.vhd(46): used explicit default value for signal "r_yPos" because signal was never assigned a value File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 46
+Warning (10036): Verilog HDL or VHDL warning at display.vhd(65): object "r_key_press" assigned a value but never read File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 65
+Warning (10492): VHDL Process Statement warning at display.vhd(88): signal "r_logic_update" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 88
+Warning (10492): VHDL Process Statement warning at display.vhd(88): signal "r_lost_ball" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 88
+Warning (10492): VHDL Process Statement warning at display.vhd(102): signal "r_logic_update" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 102
+Warning (10492): VHDL Process Statement warning at display.vhd(152): signal "w_paddleDraw" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 152
+Warning (10492): VHDL Process Statement warning at display.vhd(153): signal "w_paddleColor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 153
+Warning (10492): VHDL Process Statement warning at display.vhd(155): signal "w_ballDraw" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 155
+Warning (10492): VHDL Process Statement warning at display.vhd(156): signal "w_ballColor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 156
+Warning (10492): VHDL Process Statement warning at display.vhd(158): signal "w_brickDraw" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 158
+Warning (10492): VHDL Process Statement warning at display.vhd(159): signal "w_brickColor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 159
+Info (12128): Elaborating entity "paddle" for hierarchy "display:DISP|paddle:paddle_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 191
+Warning (10540): VHDL Signal Declaration warning at paddle.vhd(45): used explicit default value for signal "r_yPos" because signal was never assigned a value File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/objects/paddle.vhd Line: 45
+Info (12128): Elaborating entity "ball" for hierarchy "display:DISP|ball:ball_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 204
+Info (12128): Elaborating entity "brick_wall" for hierarchy "display:DISP|brick_wall:brick_wall_obj" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/display/display.vhd Line: 221
 Critical Warning (127005): Memory depth (64) in the design file differs from memory depth (44) in the Memory Initialization File "//Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/db/main.ram0_gsensor_889e66e.hdl.mif" -- setting initial value for remaining addresses to 0
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276013): RAM logic "ADXL345_controller:ACC_CTRL|gsensor:U0|spi_program" is uninferred because MIF is not supported for the selected family File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/accelerometer/gsensor.sv Line: 86
@@ -1161,48 +2038,23 @@ Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "GSENSOR_SDI~synth" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 20
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 12
-    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 12
-    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 13
-    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 13
-    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 13
-    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 14
-    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 14
-    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 14
-    Warning (13410): Pin "HEX1[0]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[1]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[3]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[5]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[6]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX1[7]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[0]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[1]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[2]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[3]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[4]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[5]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[6]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
-    Warning (13410): Pin "HEX0[7]" is stuck at GND File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 16
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: //Mac/Home/Documents/UNIVERSITY/FALL 2023/ECE 5730 - Reconfigurable Computing/VHDL Projects/FINAL PROJECT/main.vhd Line: 8
-Info (21057): Implemented 522 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2267 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 32 output pins
+    Info (21059): Implemented 24 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 484 logic cells
+    Info (21061): Implemented 2237 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 58 warnings
-    Info: Peak virtual memory: 4831 megabytes
-    Info: Processing ended: Wed Nov 15 09:19:58 2023
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:34
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
+    Info: Peak virtual memory: 4838 megabytes
+    Info: Processing ended: Thu Nov 16 15:12:48 2023
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:40
 
 
 +------------------------------------------+

@@ -8,15 +8,15 @@ use work.common.all;
 
 entity paddle is
   generic (
-      -- Play area limits
-      g_left_bound : integer := 0;
-      g_right_bound : integer := c_screen_width;
-      -- Update position every 1 frames
-      g_frame_update_cnt : integer := 1; -- Defines "smoothness" of animation
-      g_speed_scale_x : integer := 10; -- Defines the speed range for the tilt, higher value = faster paddle movement for same tilt
-      -- Hysteresis params
-      g_min_speed_x : integer := 1;
-      g_accel_in_max : integer := 2**8 -- Max input value from accelerometer (absolute value)
+    -- Play area limits
+    g_left_bound : integer := 0;
+    g_right_bound : integer := c_screen_width;
+    -- Update position every 1 frames
+    g_frame_update_cnt : integer := 1; -- Defines "smoothness" of animation
+    g_speed_scale_x : integer := 10; -- Defines the speed range for the tilt, higher value = faster paddle movement for same tilt
+    -- Hysteresis params
+    g_min_speed_x : integer := 1;
+    g_accel_in_max : integer := 2**8 -- Max input value from accelerometer (absolute value)
   );
   port (
     i_clock         : in std_logic;
@@ -26,7 +26,6 @@ entity paddle is
 
     i_row     : in integer range 0 to c_screen_height-1;
     i_column  : in integer range 0 to c_screen_width-1;
-    -- i_draw_en : in std_logic;
 
     o_pos_x   : out integer;
     o_pos_y   : out integer;
@@ -61,13 +60,7 @@ begin
           r_draw_tmp := '1';
           r_color_tmp := g_paddle_color;
       end if;
-
-      -- Override all drawing
-      -- if (i_draw_en = '0') then
-      --     r_draw_tmp := '0';
-      --     r_color_tmp := 0;
-      -- end if;
-
+      
       -- Assign outputs
       o_draw <= r_draw_tmp;
       o_color <= r_color_tmp;
@@ -80,19 +73,15 @@ begin
   variable r_frame_cnt : integer range 0 to g_frame_update_cnt := 0;
   begin
       if rising_edge(i_clock) then
-          if i_reset_pulse = '1' then
-              r_xPos <= c_init_pos_x;      
+        if i_reset_pulse = '1' then
+            r_xPos <= c_init_pos_x;      
           -- Time to update state
-          elsif i_update_pulse = '1' then
-              r_frame_cnt := r_frame_cnt + 1;
+        elsif i_update_pulse = '1' then
+            r_frame_cnt := r_frame_cnt + 1;
               -- Limit position update rate
               if (r_frame_cnt = g_frame_update_cnt) then
                   r_frame_cnt := 0;
-                  -- if(r_xSpeed>0) then
-                  --   r_xPos_new := r_xPos + 1;
-                  -- elsif(r_xSpeed<0) then
-                  --   r_xPos_new := r_xPos - 1;
-                  -- end if;
+                  -- Update position with velocity
                   r_xPos_new := r_xPos + r_xSpeed;
                   -- Check bounds and clip
                   -- X bounds

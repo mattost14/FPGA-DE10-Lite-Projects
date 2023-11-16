@@ -16,8 +16,14 @@ package common is
   constant g_mortar_color  : integer := 16#FFF#;  -- #FFFFFF 
   constant g_ball_color    : integer := 16#FFF#;  -- #FFFFFF 
   -- Paddle Size
-  constant c_paddle_width : integer := 40;
-  constant c_paddle_height : integer := 5;
+  constant c_paddle_width   : integer := 40;
+  constant c_paddle_height  : integer := 5;
+  -- Ball Size
+  constant c_ball_width   : integer := 10;
+  constant c_ball_height  : integer := 10;
+  -- Brick Size
+  constant c_brick_width   : integer := 15;
+  constant c_brick_height  : integer := 7;
 end package;
 
 package body common is
