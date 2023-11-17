@@ -24,7 +24,8 @@ entity brick_wall is
     o_color   : out integer range 0 to 4095;
     o_draw    : out std_logic;
 
-    o_block_collision : out std_logic
+    o_block_collision       : out std_logic; -- signals if a collision between ball and brick has happened
+    o_block_side_collision  : out std_logic  -- signals if the collision was a side collision with the block 
   );
 end brick_wall;
 
@@ -33,7 +34,7 @@ architecture rtl of brick_wall is
   
   constant numOfBricksCol_EvenRows    : integer := 40;
   constant numOfBricksCol_OddRows     : integer := 41;
-  constant numOfBricksRows            : integer := 2;--30;
+  constant numOfBricksRows            : integer := 30;
   constant numOfOddRows               : integer := numOfBricksRows / 2;
   constant numOfEvenRows              : integer := numOfBricksRows - numOfOddRows;
   constant numOfBricks                : integer := numOfEvenRows*numOfBricksCol_EvenRows + numOfOddRows*numOfBricksCol_OddRows;--1200;
@@ -133,6 +134,7 @@ end process;
         elsif i_update_pulse = '1' then
             r_frame_cnt := r_frame_cnt + 1;
             o_block_collision <= '0';
+            o_block_side_collision <= '0';
               -- Limit position update rate
               if (r_frame_cnt = g_frame_update_cnt) then
                 -- check for ball collision into visible bricks
@@ -141,6 +143,10 @@ end process;
                     if (mywall(i).x <= i_ball_pos_x + c_ball_width and mywall(i).x + c_brick_width >= i_ball_pos_x and mywall(i).y <= i_ball_pos_y + c_ball_height and mywall(i).y + c_brick_height >= i_ball_pos_y) then
                       mywall(i).visible <= false;
                       o_block_collision <= '1';
+                      -- Check if the collision is a side collision by check if the overlap happened close to the brick sides
+                      if (i_ball_pos_x + c_ball_width <= mywall(i).x + 2  or i_ball_pos_x >= mywall(i).x + c_brick_width - 2) then
+                        o_block_side_collision <= '1';
+                      end if;
                     end if;
                   end if;
                 end loop;

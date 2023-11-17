@@ -49,6 +49,7 @@ architecture rtl of display is
 
   -- Ball Signals
   signal w_block_collision  : std_logic := '0';
+  signal w_block_side_collision : std_logic := '0';
   signal w_ball_fall    : std_logic := '0';
   signal w_ball_pos_x : integer;
   signal w_ball_pos_y : integer;
@@ -211,6 +212,7 @@ begin
     i_paddle_pos_x    => w_paddle_pos_x,
     i_paddle_pos_y    => w_paddle_pos_y,
     i_block_collision => w_block_collision,
+    i_block_side_collision => w_block_side_collision,
     o_pos_x           => w_ball_pos_x,
     o_pos_y           => w_ball_pos_y,
     o_ball_fall       => w_ball_fall,
@@ -228,7 +230,8 @@ begin
   i_ball_pos_y      => w_ball_pos_y,
   o_color           => w_brickColor,
   o_draw            => w_brickDraw,
-  o_block_collision => w_block_collision
+  o_block_collision => w_block_collision,
+  o_block_side_collision => w_block_side_collision
 );
 
 

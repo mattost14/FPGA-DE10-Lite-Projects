@@ -32,6 +32,7 @@ entity ball is
     i_paddle_pos_y : in integer;
     -- Block colision
     i_block_collision : in std_logic;
+    i_block_side_collision : in std_logic;
     -- Output ball position
     o_pos_x   : out integer;
     o_pos_y   : out integer;
@@ -164,6 +165,9 @@ end process;
                   -- Check for Block collision
                   if i_block_collision = '1' then
                     r_ySpeed_new := -r_ySpeed;
+                    if i_block_side_collision = '1' then
+                      r_xSpeed_new := -r_xSpeed;
+                    end if;
                   end if;
 
                   -- Check for falling ball
